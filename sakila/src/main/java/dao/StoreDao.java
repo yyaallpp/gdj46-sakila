@@ -13,13 +13,16 @@ public class StoreDao {
 		ResultSet rs = null;
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/sakila","root","java1234");
+			String dburl = "jdbc:mariadb://localhost:3306/sakila";
+			String dbpw = "java1234";
+			String dbuser = "root";
+			conn = DriverManager.getConnection(dburl,dbuser,dbpw);
 			String sql = "SELECT"
 					+ "	s1.store_id storeId,"
 					+ "	s1.manager_staff_id staffId,"
 					+ "	CONCAT(s2.first_name,' ',s2.last_name) staffName,"
 					+ "	s1.address_id addressId,"
-					+ "	concat(a.address, ifnull(a.address2,' '),district ) staffAddress,"
+					+ "	concat(a.address, ifnull(a.address2,' '),district ) storeAddress,"
 					+ "	s1.last_update lastUpdate"
 					+ " FROM store s1"
 					+ "	INNER JOIN staff s2"
@@ -34,7 +37,7 @@ public class StoreDao {
 				map.put("staffId", rs.getInt("staffId"));
 				map.put("staffName", rs.getString("staffName"));
 				map.put("addressId", rs.getInt("addressId"));
-				map.put("staffAddress", rs.getString("staffAddress"));
+				map.put("storeAddress", rs.getString("storeAddress"));
 				map.put("lastUpdate", rs.getString("lastUpdate"));
 				list.add(map);
 			}
@@ -66,7 +69,7 @@ public class StoreDao {
 			System.out.print(m.get("staffId")+", ");
 			System.out.print(m.get("staffName")+", ");
 			System.out.print(m.get("addressId")+", ");
-			System.out.print(m.get("staffAddress")+", ");
+			System.out.print(m.get("storeAddress")+", ");
 			System.out.print(m.get("lastUpdate"));
 			System.out.println();
 		}
