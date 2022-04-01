@@ -18,18 +18,20 @@ public class StaffDao {
 			String dbpw = "java1234";
 			String dbuser = "root";
 			conn = DriverManager.getConnection(dburl,dbuser,dbpw); 
-			// sql문 staffId, staffName, storeId, staffAddress, userName, lastUpdate을 가져온다.
+			// sql문 staffId, staffName, email, staffAddress, storeId, userName, lastUpdate을 가져온다.
 			String sql ="SELECT"
 					+ "	s1.staff_id staffId,"
 					+ "	CONCAT(s1.first_name,' ',s1.last_name) staffName,"
-					+ "	s1.store_id storeId,"
+					+ " s1.email email,"
 					+ "	CONCAT(a.address, ifnull(a.address2,''),district ) staffAddress,"
+					+ "	s1.store_id storeId,"
 					+ "	s1.username userName,"
+					+ " s1.password password,"
 					+ "	s1.last_update lastUpdate"
 					+ " FROM staff s1"
 					+ "	INNER JOIN store s2"
 					+ "	INNER JOIN address a"
-					+ "	ON s1.staff_id = s2.manager_staff_id AND"
+					+ "	ON s1.store_id = s2.store_id AND"
 					+ "	s1.address_id = a.address_id";
 			stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
@@ -37,9 +39,11 @@ public class StaffDao {
 				Map<String,Object> map = new HashMap<>();
 				map.put("staffId", rs.getInt("staffId"));
 				map.put("staffName", rs.getString("staffName"));
-				map.put("storeId", rs.getInt("storeId"));
+				map.put("email", rs.getString("email"));
 				map.put("staffAddress", rs.getString("staffAddress"));
+				map.put("storeId", rs.getInt("storeId"));
 				map.put("userName", rs.getString("userName"));
+				map.put("password", rs.getString("password"));
 				map.put("lastUpdate", rs.getString("lastUpdate"));
 				list.add(map);
 			}
@@ -65,9 +69,11 @@ public class StaffDao {
 		for(Map m : list) {
 			System.out.print(m.get("staffId")+", ");
 			System.out.print(m.get("staffName")+", ");
-			System.out.print(m.get("storeId")+", ");
+			System.out.print(m.get("email")+", ");
 			System.out.print(m.get("staffAddress")+", ");
+			System.out.print(m.get("storeId")+", ");
 			System.out.print(m.get("userName")+", ");
+			System.out.print(m.get("password")+", ");
 			System.out.print(m.get("lastUpdate"));
 			System.out.println();
 		}

@@ -28,6 +28,7 @@
 						<th>storeId</th>
 						<th>staffAddress</th>
 						<th>userName</th>
+						<th>email</th>
 						<th>lastUpdate</th>
 					</thead>
 					<tbody>
@@ -40,6 +41,7 @@
 								<td><%=m.get("storeId")%></td>
 								<td><%=m.get("staffAddress")%></td>
 								<td><%=m.get("userName")%></td>
+								<td><%=m.get("email")%></td>
 								<td><%=m.get("lastUpdate")%></td>
 							</tr>
 						<%	
