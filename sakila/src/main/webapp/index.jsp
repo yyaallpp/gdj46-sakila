@@ -17,6 +17,13 @@
 			<ol class="list-group col-sm-8 text-center">
 					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/storeList.jsp" >Store List</a></li>
 					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/staffList.jsp">Staff List</a></li>
+					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/actorInfoList.jsp">ActorInfoList(View)</a></li>
+					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/customerList.jsp">CustomerList(View)</a></li>
+					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/filmList.jsp">filmList(View)</a></li>
+					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/nicerButSlowerFilmList.jsp">nicerButSlowerFilmList(view)</a></li>
+					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/salesByFilmCategory.jsp">salesByFilmCategory(view)</a></li>
+					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/salesByStore.jsp">salesByStore(view)</a></li>
+					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/staffListView.jsp">staffList(view)</a></li>
 			</ol>
 			<div class = "col-sm-2"> </div>
 		</div>	

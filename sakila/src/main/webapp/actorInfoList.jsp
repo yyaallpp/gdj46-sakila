@@ -27,46 +27,53 @@
 <head>
 	<meta charset="UTF-8">
 	<title>actorInfoList</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
 <body>
-	<h1>actorInfoList</h1>
-	<table border= 1>
-		<thead>
-			<th>actorId</th>
-			<th>firstName</th>
-			<th>lastName</th>
-			<th>filmInfo</th>
-		</thead>
-		<tbody>
-			<%
-				for(ActorInfo a : list ){
-			%>
+	<div class="container-fluid">
+		<div class="jumbotron">
+			<h2><a href="<%=request.getContextPath()%>/index.jsp">Home</a></h2>
+		</div>
+		
+		<h1>actorInfoList(View)</h1>
+		<table class="table">
+			<thead class="thead-dark">
+				<th>actorId</th>
+				<th>firstName</th>
+				<th>lastName</th>
+				<th>filmInfo</th>
+			</thead>
+			<tbody>
+				<%
+					for(ActorInfo a : list ){
+				%>
 				<tr>
 					<td><%=a.getActorId()%></td>
 					<td><%=a.getFirstName()%></td>
 					<td><%=a.getLastName()%></td>
 					<td><%=a.getFilmInfo()%></td>
 				</tr>
+				<%
+					}	
+				%>
+				</tbody>
+			</table>
+			<div>
 			<%
-				}	
+				if(currentPage > 1){
 			%>
-		</tbody>
-	</table>
-		<div>
-		<%
-			if(currentPage > 1){
-		%>
-			<a href="<%=request.getContextPath()%>/actorInfoList.jsp?currentPage=<%=currentPage - 1%>">이전</a>
-		<%
-			}
-		%>
-		<%
-			if(currentPage < lastPage){
-		%>
-			<a href="<%=request.getContextPath()%>/actorInfoList.jsp?currentPage=<%=currentPage+1%>">다음</a>
-		<%
-			}
-		%>
-		</div>
+				<a href="<%=request.getContextPath()%>/actorInfoList.jsp?currentPage=<%=currentPage - 1%>">이전</a>
+			<%
+				}
+			%>
+			<%
+				if(currentPage < lastPage){
+			%>
+				<a href="<%=request.getContextPath()%>/actorInfoList.jsp?currentPage=<%=currentPage+1%>">다음</a>
+			<%
+				}
+			%>
+			</div>
+	</div>
 </body>
 </html>
