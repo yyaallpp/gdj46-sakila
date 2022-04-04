@@ -1,5 +1,8 @@
 package dao;
 import java.util.*;
+
+import util.DBUtil;
+
 import java.sql.*;
 
 public class StaffDao {
@@ -12,12 +15,7 @@ public class StaffDao {
 		ResultSet rs = null;
 		
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			// db 정보 저장
-			String dburl = "jdbc:mariadb://localhost:3306/sakila";
-			String dbpw = "java1234";
-			String dbuser = "root";
-			conn = DriverManager.getConnection(dburl,dbuser,dbpw); 
+			conn = DBUtil.getConnection();
 			// sql문 staffId, staffName, email, staffAddress, storeId, userName, lastUpdate을 가져온다.
 			String sql ="SELECT"
 					+ "	s1.staff_id staffId,"

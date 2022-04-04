@@ -1,5 +1,8 @@
 package dao;
 import java.util.*;
+
+import util.DBUtil;
+
 import java.sql.*;
 
 public class StoreDao {
@@ -12,11 +15,7 @@ public class StoreDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			String dburl = "jdbc:mariadb://localhost:3306/sakila";
-			String dbpw = "java1234";
-			String dbuser = "root";
-			conn = DriverManager.getConnection(dburl,dbuser,dbpw);
+			conn = DBUtil.getConnection();
 			String sql = "SELECT"
 					+ "	s1.store_id storeId,"
 					+ "	s1.manager_staff_id staffId,"
