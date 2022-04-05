@@ -25,6 +25,7 @@ public class StaffListViewDao {
 				s.setCity(rs.getString("city"));
 				s.setCountry(rs.getString("country"));
 				s.setStoreId(rs.getInt("storeId"));
+				System.out.println(s.toString());
 				list.add(s);
 			}
 		} catch (SQLException e) {

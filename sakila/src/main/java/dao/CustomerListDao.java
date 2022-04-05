@@ -29,6 +29,7 @@ public class CustomerListDao {
 				c.setCountry(rs.getString("country"));
 				c.setNotes(rs.getString("notes"));
 				c.setStoreId(rs.getInt("storeId"));
+				System.out.println(c.toString());
 				list.add(c);
 			}
 			

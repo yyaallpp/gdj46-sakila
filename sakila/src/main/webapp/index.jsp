@@ -24,6 +24,10 @@
 					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/salesByFilmCategory.jsp">salesByFilmCategory(view)</a></li>
 					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/salesByStore.jsp">salesByStore(view)</a></li>
 					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/staffListView.jsp">staffList(view)</a></li>
+					
+					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/filmInStockForm.jsp">filmInStockForm</a></li>
+					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/filmNotInStockForm.jsp">filmNotInStockForm</a></li>
+					<li class="list-group-item list-group-item-action"><a href="<%=request.getContextPath()%>/rewardsReportForm.jsp">rewardsReport</a></li>
 			</ol>
 			<div class = "col-sm-2"> </div>
 		</div>	

@@ -21,6 +21,7 @@ public class SalesByStoreDao {
 				s.setStore(rs.getString("store"));
 				s.setManager(rs.getString("manager"));
 				s.setTotalSales(rs.getDouble("totalSales"));
+				System.out.println(s.toString());
 				list.add(s);
 			}
 		} catch (SQLException e) {

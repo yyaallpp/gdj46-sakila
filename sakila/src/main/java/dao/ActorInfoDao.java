@@ -26,7 +26,7 @@ public class ActorInfoDao {
 				actorInfo.setFirstName(rs.getString("firstName"));
 				actorInfo.setLastName(rs.getString("lastName"));
 				actorInfo.setFilmInfo(rs.getString("filmInfo"));
-				actorInfo.toString();
+				System.out.println(actorInfo.toString());
 				list.add(actorInfo);
 			}
 		} catch (SQLException e) {

@@ -20,6 +20,7 @@ public class SalesByFilmCategoryDao {
 				SalesByFilmCategory s = new SalesByFilmCategory();
 				s.setCategory(rs.getString("category"));
 				s.setTotalSales(rs.getDouble("totalSales"));
+				System.out.println(s.toString());
 				list.add(s);
 			}
 		} catch (SQLException e) {

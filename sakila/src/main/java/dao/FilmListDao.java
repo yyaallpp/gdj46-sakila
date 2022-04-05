@@ -5,6 +5,7 @@ import util.DBUtil;
 import vo.FilmList;
 
 public class FilmListDao {
+	// film 리스트 보여주기
 	public List<FilmList> selectFilmListByPage(int beginRow, int rowPerPage){
 		List<FilmList> list = new ArrayList<FilmList>();
 		Connection conn = null;
@@ -28,6 +29,7 @@ public class FilmListDao {
 				f.setLength(rs.getInt("length"));
 				f.setRating(rs.getString("rating"));
 				f.setActors(rs.getString("actors"));
+				System.out.println(f.toString());
 				list.add(f);
 			}
 		} catch (SQLException e) {
@@ -37,6 +39,7 @@ public class FilmListDao {
 		return list;
 	}
 	
+	// film 총 개수 구하기
 	public int selectFilmListTotalRow(){
 		int row = 0;
 		Connection conn = null;

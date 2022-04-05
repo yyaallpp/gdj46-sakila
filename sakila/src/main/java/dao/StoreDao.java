@@ -36,6 +36,7 @@ public class StoreDao {
 				map.put("addressId", rs.getInt("addressId"));
 				map.put("storeAddress", rs.getString("storeAddress"));
 				map.put("lastUpdate", rs.getString("lastUpdate"));
+				System.out.println(map.toString());
 				list.add(map);
 			}
 			

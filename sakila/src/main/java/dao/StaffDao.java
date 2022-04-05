@@ -41,6 +41,7 @@ public class StaffDao {
 				map.put("userName", rs.getString("userName"));
 				map.put("password", rs.getString("password"));
 				map.put("lastUpdate", rs.getString("lastUpdate"));
+				System.out.println(map.toString());
 				list.add(map);
 			}
 			

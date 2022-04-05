@@ -28,6 +28,7 @@ public class NicerButSlowerFilmList {
 				f.setLength(rs.getInt("length"));
 				f.setRating(rs.getString("rating"));
 				f.setActors(rs.getString("actors"));
+				System.out.println(f.toString());
 				list.add(f);
 			}
 		} catch (SQLException e) {
