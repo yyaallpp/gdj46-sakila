@@ -23,7 +23,7 @@
 	
 	RentalDao rentalDao = new RentalDao();
 	int lastPage = 0;
-	int totalRow = rentalDao.totalRow(storeId, customerName, beginDate, endDate);
+	int totalRow = rentalDao.selectRentalTotalRow(storeId, customerName, beginDate, endDate);
 	lastPage = totalRow / rowPerPage;
 	if(totalRow % rowPerPage !=0){
 		lastPage++;
@@ -48,14 +48,13 @@
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
-				<th>rentalId</th>
-				<th>rentalDate</th>
-				<th>returnDate</th>
-				<th>rentalId</th>
-				<th>customerId</th>
-				<th>storeId</th>
-				<th>cName</th>
-				<th>title</th>
+					<th>rentalId</th>
+					<th>rentalDate</th>
+					<th>returnDate</th>
+					<th>customerId</th>
+					<th>storeId</th>
+					<th>cName</th>
+					<th>title</th>
 				</tr>
 			</thead>
 			<%
