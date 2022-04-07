@@ -46,6 +46,18 @@
 		</div>
 		<h1>rentalSearchAction</h1>
 		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+				<th>rentalId</th>
+				<th>rentalDate</th>
+				<th>returnDate</th>
+				<th>rentalId</th>
+				<th>customerId</th>
+				<th>storeId</th>
+				<th>cName</th>
+				<th>title</th>
+				</tr>
+			</thead>
 			<%
 				for(Map<String,Object> m : list){
 			%>
