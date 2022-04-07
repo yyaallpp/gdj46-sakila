@@ -22,7 +22,7 @@
 				<h2><a href="<%=request.getContextPath()%>/index.jsp">Home</a></h2>
 		</div>
 		<h1>filmSearchForm</h1>
-		<form action="<%=request.getContextPath()%>/filmSearchAction.jsp" method="post">
+		<form action="<%=request.getContextPath()%>/search/filmSearchAction.jsp" method="post">
 			<table class="table">
 				<tr>
 					<td>카테고리</td>

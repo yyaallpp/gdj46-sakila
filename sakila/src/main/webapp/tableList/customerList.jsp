@@ -70,14 +70,14 @@
 			<%
 				if(currentPage > 1){
 			%>
-			<a href="<%=request.getContextPath()%>/customerList.jsp?currentPage=<%=currentPage-1 %>">이전</a>	
+			<a href="<%=request.getContextPath()%>/tableList/customerList.jsp?currentPage=<%=currentPage-1 %>">이전</a>	
 			<%
 				}
 			%>
 			<%
 				if(currentPage < lastPage){
 			%>
-			<a href="<%=request.getContextPath()%>/customerList.jsp?currentPage=<%=currentPage + 1 %>">다음</a>	
+			<a href="<%=request.getContextPath()%>/tableList/customerList.jsp?currentPage=<%=currentPage + 1 %>">다음</a>	
 			<%
 				}
 			%>

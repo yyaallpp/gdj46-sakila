@@ -3,16 +3,16 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>filmInStockForm</title>
+	<title>filmNotInStockForm</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 </head>
-	<body>
-		<div class="container-fluid">
-			<div class="jumbotron">
-					<h2><a href="<%=request.getContextPath()%>/index.jsp">Home</a></h2>
-			</div>
-			<h1>filmInStock</h1>
-			<form class="form-inline" method="post" action="<%=request.getContextPath()%>/filmInStock.jsp">
+<body>
+	<div class="container-fluid">
+		<div class="jumbotron">
+				<h2><a href="<%=request.getContextPath()%>/index.jsp">Home</a></h2>
+		</div>
+		<h1>filmNotInStockForm</h1>
+			<form class="form-inline" method="post" action="<%=request.getContextPath()%>/viewList/filmNotInStock.jsp">
 				<table class="table">
 					<tr>
 						<td>filmId</td>
@@ -25,6 +25,6 @@
 				</table>
 				<button class="btn btn-primary" type="submit">입력 </button>
 			</form>
-		</div>
-	</body>
+	</div>
+</body>
 </html>

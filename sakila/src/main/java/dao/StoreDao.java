@@ -4,6 +4,28 @@ import util.DBUtil;
 import java.sql.*;
 
 public class StoreDao {
+	// StoreId를 구하는 메서드
+	public List<Integer> selectStoreIdList(){
+		List<Integer> list = new ArrayList<Integer>();	
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+	
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "SELECT store_id from store";
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				list.add(rs.getInt("store_id"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
+		return list;
+	}
+	
 	// ArrayList는 List 인터페이스의 구현체 중 하나이다.
 	// HashMap은 Map 인터페이스의 구현체 중 하나이다.
 	public List<Map<String,Object>> selectStoreList(){
