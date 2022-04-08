@@ -407,9 +407,6 @@ public class FilmDao {
 	      return row;
 		
 	}
-	   
-	   
-	
 	// 영화의 가격을 가져오는 메서드
 	public List<Double> selectfilmPriceList() {
 	      List<Double> list = new ArrayList<Double>();
