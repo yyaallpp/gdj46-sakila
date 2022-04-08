@@ -446,4 +446,133 @@ public class StatsDataDao {
 		}
 		return list;
 	}
+	// 12. rating별 film 개수
+	public List<Map<String,Object>> FilmAmountByRating(){
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		// DB 접속
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		conn = DBUtil.getConnection();
+		
+		// rating, cnt
+		String sql = "SELECT rating, COUNT(*) cnt"
+				+ " FROM film "
+				+ " GROUP BY rating";
+		try {
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				// 값 넣기
+				Map<String,Object> m = new HashMap<String, Object>();
+				m.put("rating", rs.getString("rating"));
+				m.put("cnt",rs.getInt("cnt"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	// 13. category별 film 개수
+	public List<Map<String,Object>> FilmAmountByCategory(){
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		// DB 접속
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		conn = DBUtil.getConnection();
+		
+		// name, cnt
+		String sql = "SELECT c.name name , COUNT(*) cnt"
+				+ " FROM category c INNER JOIN film_category fc"
+				+ "	ON c.category_id = fc.category_id"
+				+ "	GROUP BY fc.category_id";
+		try {
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				// 값 넣기
+				Map<String,Object> m = new HashMap<String, Object>();
+				m.put("name", rs.getString("name"));
+				m.put("cnt",rs.getInt("cnt"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	// 14. 나라별 선호하는 영화(중복기준) 최소 2개이상
+	public List<Map<String,Object>> BestFilmInCountry(){
+		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
+		// DB 접속
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		conn = DBUtil.getConnection();
+		
+		// country, title, cnt
+		String sql = "SELECT t.country country ,t.title title, MAX(t.cnt) cnt "
+				+ " FROM country co, "
+				+ "   (SELECT co.country country,f.title title,COUNT(*) cnt "
+				+ "      FROM country co "
+				+ "      INNER JOIN city ci "
+				+ "      ON ci.country_id = co.country_id "
+				+ "      INNER JOIN address ad "
+				+ "      ON ad.city_id = ci.city_id "
+				+ "      INNER JOIN customer cu "
+				+ "      ON cu.address_id = ad.address_id "
+				+ "      INNER JOIN rental r "
+				+ "      ON r.customer_id = cu.customer_id "
+				+ "      INNER JOIN inventory i "
+				+ "      ON r.inventory_id = i.inventory_id "
+				+ "      INNER JOIN film f "
+				+ "      ON i.film_id = f.film_id "
+				+ "      GROUP BY co.country, f.title "
+				+ "      ORDER BY co.country, COUNT(*) DESC) t "
+				+ " GROUP BY t.country "
+				+ " HAVING MAX(t.cnt) >= 2 "
+				+ " ORDER BY t.cnt DESC ";
+		try {
+			stmt = conn.prepareStatement(sql);
+			rs = stmt.executeQuery();
+			while(rs.next()) {
+				// 값 넣기
+				Map<String,Object> m = new HashMap<String, Object>();
+				m.put("country", rs.getString("country"));
+				m.put("title", rs.getString("title"));
+				m.put("cnt",rs.getInt("cnt"));
+				list.add(m);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	} 
+	
 }

@@ -26,6 +26,12 @@
 	List<Map<String,Object>> customerAmountByStaff = statsDataDao.CustomerAmountByStaff();
 	// 11. 나라별 customer 수 상위 10개국
 	List<Map<String,Object>> customerAmountByCountry = statsDataDao.CustomerAmountByCountry();
+	// 12. rating별 film 개수
+	List<Map<String,Object>> filmAmountByRating = statsDataDao.FilmAmountByRating();
+	// 13. category별 film 개수
+	List<Map<String,Object>> filmAmountByCategory = statsDataDao.FilmAmountByCategory();
+	// 14. 나라별 선호하는 영화
+	List<Map<String,Object>> bestFilmInCountry = statsDataDao.BestFilmInCountry();
 %>
 
 <!DOCTYPE html>
@@ -297,8 +303,76 @@
 			<div class="col-sm-2"></div>
 		</div>
 		
+		<h1>12. filmAmountByRating</h1>
+		<div class = "row">
+			<div class="col-sm-8">
+				<table class="table">
+					<tr>
+						<th>rating</th>
+						<th>count</th>
+					</tr>
+					<%
+						for(Map<String,Object> m : filmAmountByRating) {
+					%>
+						<tr>
+							<td><%=m.get("rating")%></td>
+							<td><%=m.get("cnt")%></td>
+						</tr>
+					<%
+						}
+					%>
+				</table>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
 		
+		<h1>13. filmAmountByCategory</h1>
+		<div class = "row">
+			<div class="col-sm-8">
+				<table class="table">
+					<tr>
+						<th>name</th>
+						<th>count</th>
+					</tr>
+					<%
+						for(Map<String,Object> m : filmAmountByCategory) {
+					%>
+						<tr>
+							<td><%=m.get("name")%></td>
+							<td><%=m.get("cnt")%></td>
+						</tr>
+					<%
+						}
+					%>
+				</table>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
 		
+		<h1>14. bestFilmInCountry</h1>
+		<div class = "row">
+			<div class="col-sm-8">
+				<table class="table">
+					<tr>
+						<th>country</th>
+						<th>title</th>
+						<th>count</th>
+					</tr>
+					<%
+						for(Map<String,Object> m : bestFilmInCountry) {
+					%>
+						<tr>
+							<td><%=m.get("country")%></td>
+							<td><%=m.get("title")%></td>
+							<td><%=m.get("cnt")%></td>
+						</tr>
+					<%
+						}
+					%>
+				</table>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
 	</div>
 </body>
 </html>
